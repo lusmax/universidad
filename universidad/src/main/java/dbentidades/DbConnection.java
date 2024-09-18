@@ -8,7 +8,7 @@ import java.sql.SQLException;
  *
  * @author luisa
  */
-public class DbConnection {
+public abstract class DbConnection {
 
     //Métodos
     public static Connection getConnection(String url, String DataBase, String user, String pass) {
