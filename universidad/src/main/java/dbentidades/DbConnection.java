@@ -11,6 +11,7 @@ import java.sql.SQLException;
 public abstract class DbConnection {
 
     //Métodos
+    //MAKE CONNECTION
     public static Connection getConnection(String url, String DataBase, String user, String pass) {
         Connection connection = null;
 
@@ -23,5 +24,19 @@ public abstract class DbConnection {
             ex.printStackTrace();
         }
         return connection;
+    }
+
+    //CLOSE CONNECTION 
+    public static String closeConnection(Connection connection) {
+        String result;
+        try {
+            connection.close();
+            result = "Connection closed";
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            result = "Can't close connection";
+        }
+
+        return result;
     }
 }
