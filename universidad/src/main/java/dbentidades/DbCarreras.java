@@ -32,7 +32,7 @@ public abstract class DbCarreras {
     public static String insertCarrera(Connection connection, String carrera) {
         String result;
         String sql = "INSERT INTO carreras (carrera)"
-                + " VALUES (" + carrera + ")";
+                + " VALUES ('" + carrera + "')";
         try {
             Statement st = connection.createStatement();
             st.executeUpdate(sql);

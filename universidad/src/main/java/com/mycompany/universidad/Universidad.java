@@ -23,9 +23,13 @@ public class Universidad {
 
         //TESTING CONNECTION TO DATABASE
         Connection miConexion = DbConnection.getConnection(url, DataBase, user, pass);
+        
+        //TESTING INSET CARRRERA INTO DATABASE
+        //String insertCarrera = DbCarreras.insertCarrera(miConexion, "Informática");
+        //System.out.println(insertCarrera);
 
         //TESTING SELECT 
-        ResultSet selectCarrera = DbCarreras.getCarrera(miConexion, 0);
+        ResultSet selectCarrera = DbCarreras.getCarrera(miConexion, 2);
 
         try {
             while (selectCarrera.next()) {
