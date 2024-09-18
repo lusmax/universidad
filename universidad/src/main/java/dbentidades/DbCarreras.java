@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -62,4 +64,19 @@ public abstract class DbCarreras {
         return result;
     }
 
+    //DELETE 
+    public static String deleteCarrera(Connection connection, int idcarrera) {
+        String result;
+        String sql = "DELETE FROM carreras WHERE idcarrera = " + idcarrera;
+        try {
+            Statement st = connection.createStatement();
+            st.executeUpdate(sql);
+            result = "Register deleted";
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            result = "Can't delete register";
+        }
+        return result;
+
+    }
 }
