@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -30,6 +28,7 @@ public abstract class DbCarreras {
         return result;
     }
 
+    //INSERT
     public static String insertCarrera(Connection connection, String carrera) {
         String result;
         String sql = "INSERT INTO carreras (carrera)"
@@ -41,6 +40,24 @@ public abstract class DbCarreras {
         } catch (SQLException ex) {
             ex.printStackTrace();
             result = "Can't insert register";
+        }
+        return result;
+    }
+
+    //UPDATE
+    public static String updateCarrera(Connection connection, String carrera, int idcarrera) {
+        String result;
+        String sql = "UPDATE carreras "
+                + "SET carrera = " + carrera
+                + " WHERE (idcarrera = " + idcarrera + ")";
+
+        try {
+            Statement st = connection.createStatement();
+            st.executeUpdate(sql);
+            result = "New register updated";
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            result = "Can't update register";
         }
         return result;
     }
