@@ -1,5 +1,6 @@
 package dbentidades;
 
+import entidades.Carrera;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,10 +30,10 @@ public abstract class DbCarreras {
     }
 
     //INSERT
-    public static String insertCarrera(Connection connection, String carrera) {
+    public static String insertCarrera(Connection connection, Carrera miCarrera) {
         String result;
         String sql = "INSERT INTO carreras (carrera)"
-                + " VALUES ('" + carrera + "')";
+                + " VALUES ('" + miCarrera.getCarrera() + "')";
         try {
             Statement st = connection.createStatement();
             st.executeUpdate(sql);

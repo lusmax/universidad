@@ -22,7 +22,7 @@ public class Universidad {
         String url = "jdbc:mysql://localhost";
         String DataBase = "universidad";
         String user = "root";
-        String pass = "123456";
+        String pass = "root";
 
         //CREANDO CONEXION
         Connection miConexion = DbConnection.getConnection(url, DataBase, user, pass);
@@ -42,10 +42,10 @@ public class Universidad {
             case 1:
                 System.out.println("Favor introduzca la carrera");
                 String carrera = scanner.nextLine();
-                Carreras miCarrera = new Carreras(carrera);
+                Carrera miCarrera = new Carrera(carrera);
 
                 //INSERT CARRRERA INTO DATABASE
-                String insertCarrera = DbCarreras.insertCarrera(miConexion, carrera);
+                String insertCarrera = DbCarreras.insertCarrera(miConexion, miCarrera);
                 System.out.println(insertCarrera);
                 break;
             default:
@@ -53,7 +53,7 @@ public class Universidad {
             
         }
 
-        /* Carreras miCarrera = new Carreras("Historia");
+        /* Carrera miCarrera = new Carrera("Historia");
 
         String url = "jdbc:mysql://localhost";
         String DataBase = "universidad";

@@ -4,22 +4,22 @@ package entidades;
  *
  * @author ronar
  */
-public class Carreras {
+public class Carrera {
      // Atributos
     private int idcarrera;
     private String carrera;
 
     // Constructor
-    public Carreras() {
+    public Carrera() {
         //vacio
     }
 
-    public Carreras(String carrera) {
+    public Carrera(String carrera) {
         this.carrera = carrera;
     }
     
     //Getters
-    public int getIdcarreras() {
+    public int getIdcarrera() {
         return idcarrera;
     }
 
@@ -37,7 +37,7 @@ public class Carreras {
 
     @Override
     public String toString() {
-        return "Carreras{" + "idcarrera=" + idcarrera + ", carrera=" + carrera + '}';
+        return "Carrera{" + "idcarrera=" + idcarrera + ", carrera=" + carrera + '}';
     }
     
 }
