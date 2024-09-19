@@ -19,7 +19,7 @@ public class Universidad {
         String url = "jdbc:mysql://localhost";
         String DataBase = "universidad";
         String user = "root";
-        String pass = "root";
+        String pass = "123456";
 
         //TESTING CONNECTION TO DATABASE
         Connection miConexion = DbConnection.getConnection(url, DataBase, user, pass);
@@ -29,8 +29,8 @@ public class Universidad {
         //System.out.println(insertCarrera);
         
         //TESTING DELETE CARRERA INTO DATABASE
-        String deleteCarrera = DbCarreras.deleteCarrera(miConexion, 1);
-        System.out.println(deleteCarrera);
+        //String deleteCarrera = DbCarreras.deleteCarrera(miConexion, 1);
+        //System.out.println(deleteCarrera);
         
 
         //TESTING SELECT 
