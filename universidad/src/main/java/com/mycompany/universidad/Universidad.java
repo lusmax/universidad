@@ -34,23 +34,43 @@ public class Universidad {
             System.out.println(opcion);
         }
 
+        //VARIABLES
+        String carrera;
+
         // SOLICITAR OPCION DEL MENU
         int opcion = scanner.nextInt();
         scanner.nextLine();
 
         switch (opcion) {
             case 1:
-                System.out.println("Favor introduzca la carrera");
-                String carrera = scanner.nextLine();
+                System.out.println("Favor introduzca la carrera a insertar");
+                carrera = scanner.nextLine();
                 Carrera miCarrera = new Carrera(carrera);
 
                 //INSERT CARRRERA INTO DATABASE
                 String insertCarrera = DbCarreras.insertCarrera(miConexion, miCarrera);
                 System.out.println(insertCarrera);
                 break;
+            case 3:
+                System.out.println("Favor introduzca la carrera a buscar");
+                carrera = scanner.nextLine();
+                ResultSet selectCarrera = DbCarreras.getCarrera(miConexion, carrera);
+
+                try {
+                    while (selectCarrera.next()) {
+                        System.out.print("Carrera: ");
+                        System.out.print(selectCarrera.getString("carrera"));
+                        System.out.print(" ID: ");
+                        System.out.println(selectCarrera.getString("idcarrera"));
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                break;
+
             default:
                 System.out.println("Introuzca una opcion valida");
-            
+
         }
 
         /* Carrera miCarrera = new Carrera("Historia");

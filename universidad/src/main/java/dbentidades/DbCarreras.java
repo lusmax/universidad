@@ -14,10 +14,10 @@ public abstract class DbCarreras {
 
     //Métodos
     //SELECT
-    public static ResultSet getCarrera(Connection connection, int idcarrera) {
+    public static ResultSet getCarrera(Connection connection, String carrera) {
         ResultSet result = null;
         String sql = "SELECT * FROM carreras "
-                + "WHERE idcarrera = " + idcarrera;
+                + "WHERE carrera LIKE '" + carrera +  "'";
 
         try {
             Statement st = connection.createStatement();
