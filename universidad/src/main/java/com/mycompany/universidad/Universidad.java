@@ -4,8 +4,6 @@ import dbentidades.DbCarreras;
 import dbentidades.DbConnection;
 import entidades.*;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Scanner;
 import ui.MainMenu;
 
@@ -67,7 +65,6 @@ public class Universidad {
                 } else {
                     System.out.println("La carrera no fue encontrada");
                 }
-
                 break;
             case 3:
                 System.out.println("Favor introduzca la carrera a buscar");
@@ -78,7 +75,21 @@ public class Universidad {
                 } else {
                     System.out.println("La carrera no fue encontrada");
                 }
-                
+                break;
+                case 4:
+                //BUSCAR LA CARRERA A A ACTUALIZAR
+                System.out.println("Favor introducir la carrera a borrar");
+                carrera = scanner.nextLine();
+                selectedCarrera = DbCarreras.getCarrera(miConexion, carrera);
+
+                //BORRAR CARRERA SEGUN BUSQUEDA
+                if (selectedCarrera.getCarrera() != null) {
+                   
+                    String deleteCarrera = DbCarreras.deleteCarrera(miConexion, selectedCarrera);
+                    System.out.println(deleteCarrera);
+                } else {
+                    System.out.println("La carrera no fue encontrada");
+                }
                 break;
 
             default:

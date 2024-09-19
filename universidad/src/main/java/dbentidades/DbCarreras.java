@@ -70,9 +70,9 @@ public abstract class DbCarreras {
     }
 
     //DELETE 
-    public static String deleteCarrera(Connection connection, int idcarrera) {
+    public static String deleteCarrera(Connection connection, Carrera miCarrera) {
         String result;
-        String sql = "DELETE FROM carreras WHERE idcarrera = " + idcarrera;
+        String sql = "DELETE FROM carreras WHERE idcarrera = " + miCarrera.getIdcarrera();
         try {
             Statement st = connection.createStatement();
             st.executeUpdate(sql);
