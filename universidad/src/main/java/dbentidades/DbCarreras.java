@@ -14,19 +14,25 @@ public abstract class DbCarreras {
 
     //Métodos
     //SELECT
-    public static ResultSet getCarrera(Connection connection, String carrera) {
-        ResultSet result = null;
+    public static Carrera getCarrera(Connection connection, String carrera) {
+        Carrera miCarrera = new Carrera();
+        ResultSet result;
         String sql = "SELECT * FROM carreras "
-                + "WHERE carrera LIKE '" + carrera +  "'";
+                + "WHERE carrera LIKE '" + carrera + "'";
 
         try {
             Statement st = connection.createStatement();
             result = st.executeQuery(sql);
+            while (result.next()) {
+                miCarrera.setIdcarrera(result.getInt("idcarrera"));
+                miCarrera.setCarrera(result.getString("carrera"));
+                break;
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return result;
+        return miCarrera;
     }
 
     //INSERT

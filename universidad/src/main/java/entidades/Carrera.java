@@ -32,7 +32,12 @@ public class Carrera {
     public void setCarrera(String carrera) {
         this.carrera = carrera;
     }
+
+    public void setIdcarrera(int idcarrera) {
+        this.idcarrera = idcarrera;
+    }
     
+        
     //Métodos
 
     @Override

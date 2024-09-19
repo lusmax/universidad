@@ -22,7 +22,7 @@ public class Universidad {
         String url = "jdbc:mysql://localhost";
         String DataBase = "universidad";
         String user = "root";
-        String pass = "root";
+        String pass = "123456";
 
         //CREANDO CONEXION
         Connection miConexion = DbConnection.getConnection(url, DataBase, user, pass);
@@ -36,6 +36,7 @@ public class Universidad {
 
         //VARIABLES
         String carrera;
+        Carrera selectCarrera;
 
         // SOLICITAR OPCION DEL MENU
         int opcion = scanner.nextInt();
@@ -51,25 +52,23 @@ public class Universidad {
                 String insertCarrera = DbCarreras.insertCarrera(miConexion, miCarrera);
                 System.out.println(insertCarrera);
                 break;
+            case 2:
+                System.out.println("Favor introducir la carrera a actualizar");
+                carrera = scanner.nextLine();
+                selectCarrera = DbCarreras.getCarrera(miConexion, carrera);
+
+                carrera = scanner.nextLine();
+                selectCarrera = DbCarreras.getCarrera(miConexion, carrera);
+                break;
             case 3:
                 System.out.println("Favor introduzca la carrera a buscar");
                 carrera = scanner.nextLine();
-                ResultSet selectCarrera = DbCarreras.getCarrera(miConexion, carrera);
-
-                try {
-                    while (selectCarrera.next()) {
-                        System.out.print("Carrera: ");
-                        System.out.print(selectCarrera.getString("carrera"));
-                        System.out.print(" ID: ");
-                        System.out.println(selectCarrera.getString("idcarrera"));
-                    }
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
+                selectCarrera = DbCarreras.getCarrera(miConexion, carrera);
+                System.out.println(selectCarrera);
                 break;
 
             default:
-                System.out.println("Introuzca una opcion valida");
+                System.out.println("Introduzca una opcion valida");
 
         }
 
