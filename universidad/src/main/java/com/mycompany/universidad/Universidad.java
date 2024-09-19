@@ -6,6 +6,7 @@ import entidades.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import ui.MainMenu;
 
 /**
  *
@@ -14,7 +15,13 @@ import java.sql.SQLException;
 public class Universidad {
 
     public static void main(String[] args) {
-        Carreras miCarrera = new Carreras("Historia");
+        
+        String[] menu = MainMenu.getMenu();
+        
+        for(String opcion : menu) {
+            System.out.println(opcion);
+        }
+        /* Carreras miCarrera = new Carreras("Historia");
 
         String url = "jdbc:mysql://localhost";
         String DataBase = "universidad";
@@ -47,6 +54,7 @@ public class Universidad {
         //TESTING TO CLOSE CONNECTION
         String closeConnection = DbConnection.closeConnection(miConexion);
         System.out.println(closeConnection);
+*/
 
     }
 }

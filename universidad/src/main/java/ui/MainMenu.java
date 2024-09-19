@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ui;
 
 /**
@@ -9,5 +5,10 @@ package ui;
  * @author ronar
  */
 public class MainMenu {
+    public static String[] getMenu() {
+        String[] result = {"ELIJA UNA OPCION", "1. ->> Añadir", "2. ->> Actualizar", "3. ->> Ver", "4. ->> Borrar" };
+        
+        return result;
+    }
     
 }
