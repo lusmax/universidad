@@ -42,7 +42,9 @@ public class Carrera {
 
     @Override
     public String toString() {
-        return "Carrera{" + "idcarrera=" + idcarrera + ", carrera=" + carrera + '}';
+        return """
+               Carrera {
+               idcarrera =""" + " " + idcarrera + ", carrera = " + carrera + "\n}";
     }
     
 }

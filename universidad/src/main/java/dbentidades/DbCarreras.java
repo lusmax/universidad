@@ -39,7 +39,7 @@ public abstract class DbCarreras {
     public static String insertCarrera(Connection connection, Carrera miCarrera) {
         String result;
         String sql = "INSERT INTO carreras (carrera)"
-                + " VALUES ('" + miCarrera.getCarrera() + "')";
+                + " VALUES ('" + miCarrera.getIdcarrera() + "')";
         try {
             Statement st = connection.createStatement();
             st.executeUpdate(sql);
@@ -52,16 +52,16 @@ public abstract class DbCarreras {
     }
 
     //UPDATE
-    public static String updateCarrera(Connection connection, String carrera, int idcarrera) {
+    public static String updateCarrera(Connection connection, String updateCarrera, Carrera miCarrera) {
         String result;
         String sql = "UPDATE carreras "
-                + "SET carrera = " + carrera
-                + " WHERE (idcarrera = " + idcarrera + ")";
+                + "SET carrera = '" + updateCarrera + "'"
+                + " WHERE (idcarrera = " + miCarrera.getIdcarrera() + ")";
 
         try {
             Statement st = connection.createStatement();
             st.executeUpdate(sql);
-            result = "New register updated";
+            result = "Register updated";
         } catch (SQLException ex) {
             ex.printStackTrace();
             result = "Can't update register";

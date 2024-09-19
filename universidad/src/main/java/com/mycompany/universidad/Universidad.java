@@ -36,7 +36,7 @@ public class Universidad {
 
         //VARIABLES
         String carrera;
-        Carrera selectCarrera;
+        Carrera selectedCarrera;
 
         // SOLICITAR OPCION DEL MENU
         int opcion = scanner.nextInt();
@@ -53,18 +53,32 @@ public class Universidad {
                 System.out.println(insertCarrera);
                 break;
             case 2:
+                //BUSCAR LA CARRERA A A ACTUALIZAR
                 System.out.println("Favor introducir la carrera a actualizar");
                 carrera = scanner.nextLine();
-                selectCarrera = DbCarreras.getCarrera(miConexion, carrera);
+                selectedCarrera = DbCarreras.getCarrera(miConexion, carrera);
 
-                carrera = scanner.nextLine();
-                selectCarrera = DbCarreras.getCarrera(miConexion, carrera);
+                //ACTUALIZAR CARRERA SEGUN BUSQUEDA
+                if (selectedCarrera.getCarrera() != null) {
+                    System.out.println("Favor introducir el cambio para " + selectedCarrera.getCarrera());
+                    carrera = scanner.nextLine();
+                    String updatedCarrera = DbCarreras.updateCarrera(miConexion, carrera, selectedCarrera);
+                    System.out.println(updatedCarrera);
+                } else {
+                    System.out.println("La carrera no fue encontrada");
+                }
+
                 break;
             case 3:
                 System.out.println("Favor introduzca la carrera a buscar");
                 carrera = scanner.nextLine();
-                selectCarrera = DbCarreras.getCarrera(miConexion, carrera);
-                System.out.println(selectCarrera);
+                selectedCarrera = DbCarreras.getCarrera(miConexion, carrera);
+                if (selectedCarrera.getCarrera() != null) {
+                    System.out.println(selectedCarrera);
+                } else {
+                    System.out.println("La carrera no fue encontrada");
+                }
+                
                 break;
 
             default:
@@ -92,11 +106,11 @@ public class Universidad {
         
 
         //TESTING SELECT 
-        ResultSet selectCarrera = DbCarreras.getCarrera(miConexion, 2);
+        ResultSet selectedCarrera = DbCarreras.getCarrera(miConexion, 2);
 
         try {
-            while (selectCarrera.next()) {
-                System.out.println(selectCarrera.getString("carrera"));
+            while (selectedCarrera.next()) {
+                System.out.println(selectedCarrera.getString("carrera"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
