@@ -11,17 +11,19 @@ import java.sql.Statement;
  * @author ronar
  */
 public abstract class DbCarreras {
+    //CREAR CONEXION A LA BASE DE DATOS
+    private static final Connection CONNECTION = DbConnection.getConnection();
 
     //Métodos
     //SELECT
-    public static Carrera getCarrera(Connection connection, String carrera) {
+    public static Carrera getCarrera(String carrera) {
         Carrera miCarrera = new Carrera();
         ResultSet result;
         String sql = "SELECT * FROM carreras "
                 + "WHERE carrera LIKE '" + carrera + "'";
 
         try {
-            Statement st = connection.createStatement();
+            Statement st = DbCarreras.CONNECTION.createStatement();
             result = st.executeQuery(sql);
             while (result.next()) {
                 miCarrera.setIdcarrera(result.getInt("idcarrera"));
@@ -36,12 +38,12 @@ public abstract class DbCarreras {
     }
 
     //INSERT
-    public static String insertCarrera(Connection connection, Carrera miCarrera) {
+    public static String insertCarrera(Carrera miCarrera) {
         String result;
         String sql = "INSERT INTO carreras (carrera)"
                 + " VALUES ('" + miCarrera.getCarrera() + "')";
         try {
-            Statement st = connection.createStatement();
+            Statement st = DbCarreras.CONNECTION.createStatement();
             st.executeUpdate(sql);
             result = "New register inserted";
         } catch (SQLException ex) {
@@ -52,14 +54,14 @@ public abstract class DbCarreras {
     }
 
     //UPDATE
-    public static String updateCarrera(Connection connection, String updateCarrera, Carrera miCarrera) {
+    public static String updateCarrera(String updateCarrera, Carrera miCarrera) {
         String result;
         String sql = "UPDATE carreras "
                 + "SET carrera = '" + updateCarrera + "'"
                 + " WHERE (idcarrera = " + miCarrera.getIdcarrera() + ")";
 
         try {
-            Statement st = connection.createStatement();
+            Statement st = DbCarreras.CONNECTION.createStatement();
             st.executeUpdate(sql);
             result = "Register updated";
         } catch (SQLException ex) {
@@ -70,11 +72,11 @@ public abstract class DbCarreras {
     }
 
     //DELETE 
-    public static String deleteCarrera(Connection connection, Carrera miCarrera) {
+    public static String deleteCarrera(Carrera miCarrera) {
         String result;
         String sql = "DELETE FROM carreras WHERE idcarrera = " + miCarrera.getIdcarrera();
         try {
-            Statement st = connection.createStatement();
+            Statement st = DbCarreras.CONNECTION.createStatement();
             st.executeUpdate(sql);
             result = "Register deleted";
         } catch (SQLException ex) {

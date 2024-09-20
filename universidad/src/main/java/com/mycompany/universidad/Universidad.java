@@ -41,20 +41,20 @@ public class Universidad {
                 Carrera miCarrera = new Carrera(carrera);
 
                 //INSERT CARRRERA INTO DATABASE
-                String insertCarrera = DbCarreras.insertCarrera(miConexion, miCarrera);
+                String insertCarrera = DbCarreras.insertCarrera(miCarrera);
                 System.out.println(insertCarrera);
                 break;
             case 2:
                 //BUSCAR LA CARRERA A A ACTUALIZAR
                 System.out.println("Favor introducir la carrera a actualizar");
                 carrera = scanner.nextLine();
-                selectedCarrera = DbCarreras.getCarrera(miConexion, carrera);
+                selectedCarrera = DbCarreras.getCarrera(carrera);
 
                 //ACTUALIZAR CARRERA SEGUN BUSQUEDA
                 if (selectedCarrera.getCarrera() != null) {
                     System.out.println("Favor introducir el cambio para " + selectedCarrera.getCarrera());
                     carrera = scanner.nextLine();
-                    String updatedCarrera = DbCarreras.updateCarrera(miConexion, carrera, selectedCarrera);
+                    String updatedCarrera = DbCarreras.updateCarrera(carrera, selectedCarrera);
                     System.out.println(updatedCarrera);
                 } else {
                     System.out.println("La carrera no fue encontrada");
@@ -63,7 +63,7 @@ public class Universidad {
             case 3:
                 System.out.println("Favor introduzca la carrera a buscar");
                 carrera = scanner.nextLine();
-                selectedCarrera = DbCarreras.getCarrera(miConexion, carrera);
+                selectedCarrera = DbCarreras.getCarrera(carrera);
                 if (selectedCarrera.getCarrera() != null) {
                     System.out.println(selectedCarrera);
                 } else {
@@ -74,12 +74,12 @@ public class Universidad {
                 //BUSCAR LA CARRERA A A ACTUALIZAR
                 System.out.println("Favor introducir la carrera a borrar");
                 carrera = scanner.nextLine();
-                selectedCarrera = DbCarreras.getCarrera(miConexion, carrera);
+                selectedCarrera = DbCarreras.getCarrera(carrera);
 
                 //BORRAR CARRERA SEGUN BUSQUEDA
                 if (selectedCarrera.getCarrera() != null) {
                    
-                    String deleteCarrera = DbCarreras.deleteCarrera(miConexion, selectedCarrera);
+                    String deleteCarrera = DbCarreras.deleteCarrera(selectedCarrera);
                     System.out.println(deleteCarrera);
                 } else {
                     System.out.println("La carrera no fue encontrada");

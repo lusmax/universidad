@@ -24,7 +24,7 @@ public abstract class DbConnection {
         try {
 
             connection = DriverManager.getConnection(DbConnection.URL + "/" + DbConnection.DATABASE, DbConnection.USER, DbConnection.PASS);
-            System.out.println("ConnecDataBasetion OK");
+            System.out.println("Data Base Connection OK");
 
         } catch (SQLException ex) {
             ex.printStackTrace();
