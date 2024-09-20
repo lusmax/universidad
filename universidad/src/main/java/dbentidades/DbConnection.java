@@ -9,16 +9,22 @@ import java.sql.SQLException;
  * @author luisa
  */
 public abstract class DbConnection {
+    
+    //Datos DB
+        private static String url = "jdbc:mysql://localhost";
+        private static String DataBase = "universidad";
+        private static String user = "root";
+        private static String pass = "123456";
 
     //Métodos
     //MAKE CONNECTION
-    public static Connection getConnection(String url, String DataBase, String user, String pass) {
+    public static Connection getConnection() {
         Connection connection = null;
 
         try {
 
-            connection = DriverManager.getConnection(url + "/" + DataBase, user, pass);
-            System.out.println("Connection OK");
+            connection = DriverManager.getConnection(DbConnection.url + "/" + DbConnection.DataBase, DbConnection.user, DbConnection.pass);
+            System.out.println("ConnecDataBasetion OK");
 
         } catch (SQLException ex) {
             ex.printStackTrace();

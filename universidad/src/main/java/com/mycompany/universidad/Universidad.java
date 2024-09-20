@@ -16,14 +16,8 @@ public class Universidad {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        //Datos DB
-        String url = "jdbc:mysql://localhost";
-        String DataBase = "universidad";
-        String user = "root";
-        String pass = "123456";
-
         //CREANDO CONEXION
-        Connection miConexion = DbConnection.getConnection(url, DataBase, user, pass);
+        Connection miConexion = DbConnection.getConnection();
 
         // IMPRIMIR EL MENU EN PANTALLA
         String[] menu = MainMenu.getMenu();
