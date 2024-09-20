@@ -6,8 +6,6 @@ import entidades.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import ui.MainMenu;
 
 /**
@@ -18,9 +16,6 @@ public class Universidad {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        //CREANDO CONEXION
-        Connection miConexion = DbConnection.getConnection();
 
         // IMPRIMIR EL MENU EN PANTALLA
         String[] menu = MainMenu.getMenu();
