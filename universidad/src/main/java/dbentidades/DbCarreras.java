@@ -39,7 +39,7 @@ public abstract class DbCarreras {
     public static String insertCarrera(Connection connection, Carrera miCarrera) {
         String result;
         String sql = "INSERT INTO carreras (carrera)"
-                + " VALUES ('" + miCarrera.getIdcarrera() + "')";
+                + " VALUES ('" + miCarrera.getCarrera() + "')";
         try {
             Statement st = connection.createStatement();
             st.executeUpdate(sql);
