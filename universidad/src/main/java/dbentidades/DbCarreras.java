@@ -12,7 +12,8 @@ import java.sql.Statement;
  */
 public abstract class DbCarreras {
     //CREAR CONEXION A LA BASE DE DATOS
-    private static final Connection CONNECTION = DbConnection.getConnection();
+    //private static final Connection CONNECTION = DbConnection.getConnection();
+    private static final Statement STATEMENT = DbConnection.getStatement();
 
     //Métodos
     //SELECT
@@ -23,8 +24,7 @@ public abstract class DbCarreras {
                 + "WHERE carrera LIKE '" + carrera + "'";
 
         try {
-            Statement st = DbCarreras.CONNECTION.createStatement();
-            result = st.executeQuery(sql);
+            result = STATEMENT.executeQuery(sql);
             while (result.next()) {
                 miCarrera.setIdcarrera(result.getInt("idcarrera"));
                 miCarrera.setCarrera(result.getString("carrera"));
@@ -43,8 +43,7 @@ public abstract class DbCarreras {
         String sql = "INSERT INTO carreras (carrera)"
                 + " VALUES ('" + miCarrera.getCarrera() + "')";
         try {
-            Statement st = DbCarreras.CONNECTION.createStatement();
-            st.executeUpdate(sql);
+            STATEMENT.executeUpdate(sql);
             result = "New register inserted";
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -61,8 +60,7 @@ public abstract class DbCarreras {
                 + " WHERE (idcarrera = " + miCarrera.getIdcarrera() + ")";
 
         try {
-            Statement st = DbCarreras.CONNECTION.createStatement();
-            st.executeUpdate(sql);
+            STATEMENT.executeUpdate(sql);
             result = "Register updated";
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -76,8 +74,7 @@ public abstract class DbCarreras {
         String result;
         String sql = "DELETE FROM carreras WHERE idcarrera = " + miCarrera.getIdcarrera();
         try {
-            Statement st = DbCarreras.CONNECTION.createStatement();
-            st.executeUpdate(sql);
+            STATEMENT.executeUpdate(sql);
             result = "Register deleted";
         } catch (SQLException ex) {
             ex.printStackTrace();

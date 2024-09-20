@@ -3,6 +3,7 @@ package dbentidades;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -31,6 +32,8 @@ public abstract class DbConnection {
         }
         return connection;
     }
+    
+    
 
     //CLOSE CONNECTION 
     public static String closeConnection(Connection connection) {
@@ -44,5 +47,17 @@ public abstract class DbConnection {
         }
 
         return result;
+    }
+    
+    public static Statement getStatement() {
+        Statement statement = null;
+        
+            try {
+                statement = DbConnection.getConnection().createStatement();
+            } catch (SQLException ex) {
+               ex.printStackTrace();
+            }
+        
+        return statement;
     }
 }
