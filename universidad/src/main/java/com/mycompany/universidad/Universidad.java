@@ -15,7 +15,7 @@ public class Universidad {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
+
         //CREANDO CONEXION
         Connection miConexion = DbConnection.getConnection();
 
@@ -70,7 +70,7 @@ public class Universidad {
                     System.out.println("La carrera no fue encontrada");
                 }
                 break;
-                case 4:
+            case 4:
                 //BUSCAR LA CARRERA A A ACTUALIZAR
                 System.out.println("Favor introducir la carrera a borrar");
                 carrera = scanner.nextLine();
@@ -78,7 +78,7 @@ public class Universidad {
 
                 //BORRAR CARRERA SEGUN BUSQUEDA
                 if (selectedCarrera.getCarrera() != null) {
-                   
+
                     String deleteCarrera = DbCarreras.deleteCarrera(selectedCarrera);
                     System.out.println(deleteCarrera);
                 } else {

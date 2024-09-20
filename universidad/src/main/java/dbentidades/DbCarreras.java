@@ -1,7 +1,6 @@
 package dbentidades;
 
 import entidades.Carrera;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,8 +10,9 @@ import java.sql.Statement;
  * @author ronar
  */
 public abstract class DbCarreras {
+
     //CREAR CONEXION A LA BASE DE DATOS
-    //private static final Connection CONNECTION = DbConnection.getConnection();
+    //private static final Connection CONNECTION = DbConnection.getConnection(); // DbConnection.getStatement() ya usa crea la conexion *** 
     private static final Statement STATEMENT = DbConnection.getStatement();
 
     //Métodos

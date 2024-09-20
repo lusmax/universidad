@@ -10,12 +10,12 @@ import java.sql.Statement;
  * @author luisa
  */
 public abstract class DbConnection {
-    
+
     //Datos DB
-        private static final String URL = System.getenv("DB_URL_PRUEBA");
-        private static final String DATABASE = System.getenv("DB_PRUEBA");
-        private static final String USER = System.getenv("DB_USER_PRUEBA");
-        private static final String PASS = System.getenv("DB_PASS_PRUEBA");
+    private static final String URL = System.getenv("DB_URL_PRUEBA");
+    private static final String DATABASE = System.getenv("DB_PRUEBA");
+    private static final String USER = System.getenv("DB_USER_PRUEBA");
+    private static final String PASS = System.getenv("DB_PASS_PRUEBA");
 
     //Métodos
     //MAKE CONNECTION
@@ -32,8 +32,6 @@ public abstract class DbConnection {
         }
         return connection;
     }
-    
-    
 
     //CLOSE CONNECTION 
     public static String closeConnection(Connection connection) {
@@ -48,16 +46,16 @@ public abstract class DbConnection {
 
         return result;
     }
-    
+
     public static Statement getStatement() {
         Statement statement = null;
-        
-            try {
-                statement = DbConnection.getConnection().createStatement();
-            } catch (SQLException ex) {
-               ex.printStackTrace();
-            }
-        
+
+        try {
+            statement = DbConnection.getConnection().createStatement();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
         return statement;
     }
 }
