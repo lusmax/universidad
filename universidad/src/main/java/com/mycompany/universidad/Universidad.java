@@ -4,7 +4,10 @@ import dbentidades.DbCarreras;
 import dbentidades.DbConnection;
 import entidades.*;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import ui.MainMenu;
 
 /**
@@ -91,39 +94,14 @@ public class Universidad {
 
         }
 
-        /* Carrera miCarrera = new Carrera("Historia");
-
-        String url = "jdbc:mysql://localhost";
-        String DataBase = "universidad";
-        String user = "root";
-        String pass = "123456";
-
-        //TESTING CONNECTION TO DATABASE
-        Connection miConexion = DbConnection.getConnection(url, DataBase, user, pass);
-        
-        //TESTING INSERT CARRRERA INTO DATABASE
-        //String insertCarrera = DbCarreras.insertCarrera(miConexion, "Informática");
-        //System.out.println(insertCarrera);
-        
-        //TESTING DELETE CARRERA INTO DATABASE
-        //String deleteCarrera = DbCarreras.deleteCarrera(miConexion, 1);
-        //System.out.println(deleteCarrera);
-        
-
-        //TESTING SELECT 
-        ResultSet selectedCarrera = DbCarreras.getCarrera(miConexion, 2);
-
         try {
-            while (selectedCarrera.next()) {
-                System.out.println(selectedCarrera.getString("carrera"));
-            }
+
+            DbConnection.closeConnection();
+            System.out.println("Connection closed");
         } catch (SQLException ex) {
             ex.printStackTrace();
+            System.out.println("Can't close connection");
         }
 
-        //TESTING TO CLOSE CONNECTION
-        String closeConnection = DbConnection.closeConnection(miConexion);
-        System.out.println(closeConnection);
-         */
     }
 }

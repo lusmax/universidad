@@ -16,6 +16,10 @@ public abstract class DbConnection {
     private static final String DATABASE = System.getenv("DB_PRUEBA");
     private static final String USER = System.getenv("DB_USER_PRUEBA");
     private static final String PASS = System.getenv("DB_PASS_PRUEBA");
+    
+    //CONEXION DB
+    private static final Connection CONNECTION = DbConnection.getConnection();
+    
 
     //Métodos
     //MAKE CONNECTION
@@ -34,24 +38,17 @@ public abstract class DbConnection {
     }
 
     //CLOSE CONNECTION 
-    public static String closeConnection(Connection connection) {
-        String result;
-        try {
-            connection.close();
-            result = "Connection closed";
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            result = "Can't close connection";
-        }
+    public static void closeConnection() throws SQLException {
+        DbConnection.CONNECTION.close();
 
-        return result;
     }
 
+    //GET STATEMENT
     public static Statement getStatement() {
         Statement statement = null;
 
         try {
-            statement = DbConnection.getConnection().createStatement();
+            statement = CONNECTION.createStatement();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
