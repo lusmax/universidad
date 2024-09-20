@@ -11,10 +11,10 @@ import java.sql.SQLException;
 public abstract class DbConnection {
     
     //Datos DB
-        private static String url = "jdbc:mysql://localhost";
-        private static String DataBase = "universidad";
-        private static String user = "root";
-        private static String pass = "123456";
+        private static final String URL = System.getenv("DB_URL_PRUEBA");
+        private static final String DATABASE = System.getenv("DB_PRUEBA");
+        private static final String USER = System.getenv("DB_USER_PRUEBA");
+        private static final String PASS = System.getenv("DB_PASS_PRUEBA");
 
     //Métodos
     //MAKE CONNECTION
@@ -23,7 +23,7 @@ public abstract class DbConnection {
 
         try {
 
-            connection = DriverManager.getConnection(DbConnection.url + "/" + DbConnection.DataBase, DbConnection.user, DbConnection.pass);
+            connection = DriverManager.getConnection(DbConnection.URL + "/" + DbConnection.DATABASE, DbConnection.USER, DbConnection.PASS);
             System.out.println("ConnecDataBasetion OK");
 
         } catch (SQLException ex) {

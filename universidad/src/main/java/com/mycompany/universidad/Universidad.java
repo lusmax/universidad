@@ -15,7 +15,7 @@ public class Universidad {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        
         //CREANDO CONEXION
         Connection miConexion = DbConnection.getConnection();
 
