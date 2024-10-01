@@ -3,7 +3,6 @@ package com.mycompany.universidad;
 import dbentidades.DbCarreras;
 import dbentidades.DbConnection;
 import entidades.*;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 import ui.MainMenu;
