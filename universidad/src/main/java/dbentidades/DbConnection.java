@@ -23,7 +23,7 @@ public abstract class DbConnection {
 
     //Métodos
     //MAKE CONNECTION
-    public static Connection getConnection() {
+    private static Connection getConnection() { //Considerar hacer private el metodo
         Connection connection = null;
 
         try {
@@ -44,7 +44,7 @@ public abstract class DbConnection {
     }
 
     //GET STATEMENT
-    public static Statement getStatement() {
+    static Statement getStatement() { //cosiderar hacer default el método
         Statement statement = null;
 
         try {
