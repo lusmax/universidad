@@ -33,7 +33,9 @@ public class Universidad {
 
         switch (opcion) {
             case 1:
-                System.out.println("Favor introduzca la carrera a insertar"); // Luisa rosario
+
+                System.out.println("Favor introduzca la carrera a insertar");
+
                 carrera = scanner.nextLine();
                 Carrera miCarrera = new Carrera(carrera);
 
