@@ -13,7 +13,7 @@ import ui.MainMenu;
  */
 public class Universidad {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { // probando resolucion de conflitos.
         Scanner scanner = new Scanner(System.in);
 
         // IMPRIMIR EL MENU EN PANTALLA
